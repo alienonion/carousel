@@ -56,7 +56,7 @@ function Carousel({
     setXPosition(xPosition - index * width);
   }
 
-
+//todo
   useEffect(() => {
     const updateSize = () => {
       if (slideRef.current) {
@@ -73,6 +73,7 @@ function Carousel({
       <Wrapper className={"carouselWrapper"}>
         <Slide xPosition={xPosition} ref={slideRef}>
           {images.map((img, i) => {
+            // todo how to pass image urls as a parameter
             // eslint-disable-next-line
             return (<img src={require("../image/carousel_1.jpg").default} alt={`carousel ${i + 1}`} key={i}/>)
           })}

@@ -13,9 +13,9 @@ const IndicatorWrapper = styled.div`
 
 
   & .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 5px 0;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px 0;
     background-color: rgba(95, 95, 95, 0.64);
     border-radius: 50%;
     display: inline-block;
@@ -26,14 +26,13 @@ const IndicatorWrapper = styled.div`
   }
 `
 
-const Indicator = ({numImages, currentImageIndex}) => {
+
+const Indicator = ({numImages, currentImageIndex, changeSlideHandler}) => {
   return (
       <IndicatorWrapper>
-        {[...Array(numImages).keys()].map((i) => {
-          console.log(i);
-          console.log(currentImageIndex);
+        {[...Array(numImages).keys()].map((key) => {
           return (
-          <span key={i} className={`dot ${i === currentImageIndex && "dot--active"}`}/>)
+          <span key={key} onClick={() => changeSlideHandler(key)} className={`dot ${key === currentImageIndex && "dot--active"}`}/>)
         })}
       </IndicatorWrapper>)
 

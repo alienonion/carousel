@@ -15,8 +15,10 @@ const Slide = styled.div`
   // responsive image
   transform: ${props => `translateX(${props.xPosition}px)`}; // move to next slide
   transition: transform 0.5s ease-in-out;
+
   img {
-    max-width:100%; width:100%;
+    max-width: 100%;
+    width: 100%;
   }
 `;
 
@@ -48,14 +50,21 @@ function Carousel({
   };
   const slideRef = useRef();
 
+  const changeSlideHandler = (index) => {
+    console.log(`clicked and index is ${index}`)
+    setIndex(index);
+    setXPosition(xPosition - index * width);
+  }
+
 
   useEffect(() => {
-    const updateSize = () =>
-    { if (slideRef.current) {
-      const width = slideRef.current.clientWidth;
-      setWidth(width);
-      setXPosition(- width * index);
-    }}
+    const updateSize = () => {
+      if (slideRef.current) {
+        const width = slideRef.current.clientWidth;
+        setWidth(width);
+        setXPosition(-(width * index));
+      }
+    }
     updateSize();
     window.addEventListener('resize', updateSize);
   }, [setWidth, index]);
@@ -65,7 +74,7 @@ function Carousel({
         <Slide xPosition={xPosition} ref={slideRef}>
           {images.map((img, i) => {
             // eslint-disable-next-line
-            return (<img src={require("./image/carousel_1.jpg").default} alt={`carousel ${i + 1}`} key={i}/>)
+            return (<img src={require("../image/carousel_1.jpg").default} alt={`carousel ${i + 1}`} key={i}/>)
           })}
 
         </Slide>
@@ -73,7 +82,7 @@ function Carousel({
             handleClickPrev={handleClickPrev}
             handleClickNext={handleClickNext}
         />
-        <Indicator numImages={images.length} currentImageIndex={index}/>
+        <Indicator numImages={images.length} currentImageIndex={index} changeSlideHandler={changeSlideHandler}/>
       </Wrapper>
   );
 }

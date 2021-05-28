@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Carousel from './Carousel';
+import styled from 'styled-components';
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaeaea;
+`;
+export default function App() {
 
-function App() {
+
+
+  // useEffect(() => {
+  //   const handleAutoplay = setInterval(handleClickNext, 3000);
+  //   return () => clearInterval(handleAutoplay);
+  // }, [handleClickNext]);
+  const images = [ './image/carousel_1.jpg', './image/carousel_1.jpg', './image/carousel_1.jpg' ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Wrapper className="App">
+        <Carousel
+            images={images}
+            // handleClickPrev={handleClickPrev}
+            // handleClicknext={handleClickNext}
+        />
+      </Wrapper>
   );
 }
-
-export default App;

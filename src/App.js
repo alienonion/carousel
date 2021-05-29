@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 export default function App() {
 
 //todo
-  const images = [ './image/carousel_1.jpg', './image/carousel_1.jpg', './image/carousel_1.jpg' ];
+  const images = [ '../image/carousel_1.jpg', '../image/carousel_1.jpg', '../image/carousel_1.jpg' ];
 
   return (
       <Wrapper className="App">

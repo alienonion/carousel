@@ -86,6 +86,11 @@ function Carousel({
     return () => window.removeEventListener("resize", handleResize);
   }, [setWidth, index, isAnimated, xPosition]);
 
+  useEffect(() => {
+    const handleAutoplay = setInterval(handleClickNext, 3000);
+    return () => clearInterval(handleAutoplay);
+  }, [handleClickNext]);
+
   return (
       <Wrapper className={"carouselWrapper"}>
         <Slide xPosition={xPosition} ref={slideRef} isAnimated={isAnimated}>
